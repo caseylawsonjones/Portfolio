@@ -1,0 +1,148 @@
+﻿<div class="modal" , role="dialog">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="container">
+                <div class="row">
+                    <!-- HTML for Fizz Buzz -->
+                    <div class="col-md-6 Fizz_Buzz Div_Common">
+                        <h3>Input two numbers between 1 and 100.</h3>
+                        <h6>(separated by a comma)</h6>
+                        <div class="Fizz_Buzz_Input">
+                            <input id="Fizz_String" type="text" name="" />
+                            <button onclick="func_Load_Buzz_Array(Fizz_String.value)">Submit</button>
+                        </div>                <br />
+                        <h5>Your FIZZ-BUZZ results:</h5>
+                        <i id="Fizz_Buzz"></i>
+                    </div>
+                    <!-- Preformated Javascript Code -->
+                    <div class="col-md-6">
+                        <pre class="brush: js">
+                            var Buzz_Array = [];
+                            function func_Load_Buzz_Array(Buzz_Input) {
+                                var i = 0;
+                                var Temp_Num = '';
+                                if (Buzz_Input == '') {
+                                    document.getElementById("Fizz_Buzz").innerHTML = "This only works if you actually enter numbers...";
+                                    return;
+                                }
+                                for (n = 0; n < (Buzz_Input.length); n++) {
+                                    if (((Buzz_Input.charCodeAt(n) >= 46) && (Buzz_Input.charCodeAt(n) <= 57)) && (Buzz_Input.charCodeAt(n) != 47)) {
+                                        Temp_Num += Buzz_Input.charAt(n)
+                                    }
+                                    else {
+                                        Buzz_Array[i] = Number(Temp_Num);
+                                        i++;
+                                        Temp_Num = '';
+                                    }
+                                }
+                                /* If the last character entered was not a number, then Temp_Num will = '' and a
+                                zero will incorrectly be concatenated into the array */
+                                if (Temp_Num != '') {
+                                    Buzz_Array[i] = Number(Temp_Num);
+                                }
+                                Temp_Num = '';
+                                if ((((Buzz_Array[0] > 100) || (Buzz_Array[0] <= 0))) || (((Buzz_Array[1] > 100) || (Buzz_Array[1] <= 0)))) {
+                                    document.getElementById("Fizz_Buzz").innerHTML = "Please try again.  Both numbers need to be between 1 and 100.";
+                                    return;
+                                }
+                                else {
+                                    if (Buzz_Array[0] == Buzz_Array[1]) {
+                                        document.getElementById("Fizz_Buzz").innerHTML = "The results are much more interesting if you enter two diffent numbers.";
+                                        return;
+                                    }
+                                    else {
+                                        func_FizzBuzz_Results();
+                                    }
+                                }
+                            }
+                            function func_FizzBuzz_Results() {
+                                var Fizz = Buzz_Array[0];
+                                var Buzz = Buzz_Array[1];
+                                var Fizz_Buzz_Array = [];
+                                for (i = 0; i <= 99; i++) {
+                                    Fizz_Buzz_Array[i] = i + 1;
+                                    if (((Fizz_Buzz_Array[i] % Fizz) == 0) && ((Fizz_Buzz_Array[i] % Buzz) == 0)) {
+                                        Fizz_Buzz_Array[i] = "<span style='color: red;'> FIZZ--BUZZ </span > ";
+                                    }
+                                    else {
+                                        if ((Fizz_Buzz_Array[i] % Fizz) == 0) {
+                                            Fizz_Buzz_Array[i] = "<span style='color: blue;'> FIZZ </span > ";
+                                        }
+                                        else {
+                                            if ((Fizz_Buzz_Array[i] % Buzz) == 0) {
+                                                Fizz_Buzz_Array[i] = "<span style='color: orange;'> BUZZ </span > ";
+                                            }
+                                        }
+                                    }
+                                }
+                                document.getElementById("Fizz_Buzz").innerHTML = Fizz_Buzz_Array;
+                            }
+                        </pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+            var Buzz_Array = [];
+            function func_Load_Buzz_Array(Buzz_Input) {
+                var i = 0;
+                var Temp_Num = '';
+                if (Buzz_Input == '') {
+                    document.getElementById("Fizz_Buzz").innerHTML = "This only works if you actually enter numbers...";
+                    return;
+                }
+                for (n = 0; n < (Buzz_Input.length); n++) {
+                    if (((Buzz_Input.charCodeAt(n) >= 46) && (Buzz_Input.charCodeAt(n) <= 57)) && (Buzz_Input.charCodeAt(n) != 47)) {
+                        Temp_Num += Buzz_Input.charAt(n)
+                    }
+                    else {
+                        Buzz_Array[i] = Number(Temp_Num);
+                        i++;
+                        Temp_Num = '';
+                    }
+                }
+                /* If the last character entered was not a number, then Temp_Num will = '' and a
+                zero will incorrectly be concatenated into the array */
+                if (Temp_Num != '') {
+                    Buzz_Array[i] = Number(Temp_Num);
+                }
+                Temp_Num = '';
+                if ((((Buzz_Array[0] > 100) || (Buzz_Array[0] <= 0))) || (((Buzz_Array[1] > 100) || (Buzz_Array[1] <= 0)))) {
+                    document.getElementById("Fizz_Buzz").innerHTML = "Please try again.  Both numbers need to be between 1 and 100.";
+                    return;
+                }
+                else {
+                    if (Buzz_Array[0] == Buzz_Array[1]) {
+                        document.getElementById("Fizz_Buzz").innerHTML = "The results are much more interesting if you enter two diffent numbers.";
+                        return;
+                    }
+                    else {
+                        func_FizzBuzz_Results();
+                    }
+                }
+            }
+            function func_FizzBuzz_Results() {
+                var Fizz = Buzz_Array[0];
+                var Buzz = Buzz_Array[1];
+                var Fizz_Buzz_Array = [];
+                for (i = 0; i <= 99; i++) {
+                    Fizz_Buzz_Array[i] = i + 1;
+                    if (((Fizz_Buzz_Array[i] % Fizz) == 0) && ((Fizz_Buzz_Array[i] % Buzz) == 0)) {
+                        Fizz_Buzz_Array[i] = "<span style='color: red;'> FIZZ--BUZZ </span > ";
+                    }
+                    else {
+                        if ((Fizz_Buzz_Array[i] % Fizz) == 0) {
+                            Fizz_Buzz_Array[i] = "<span style='color: blue;'> FIZZ </span > ";
+                        }
+                        else {
+                            if ((Fizz_Buzz_Array[i] % Buzz) == 0) {
+                                Fizz_Buzz_Array[i] = "<span style='color: orange;'> BUZZ </span > ";
+                            }
+                        }
+                    }
+                }
+                document.getElementById("Fizz_Buzz").innerHTML = Fizz_Buzz_Array;
+            }
+        </script>
+    </div>
+</div>

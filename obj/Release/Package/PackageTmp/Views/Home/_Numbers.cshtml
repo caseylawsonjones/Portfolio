@@ -1,0 +1,145 @@
+﻿<div class="modal" , role="dialog">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="container">
+                <div class="row">
+                    <!-- HTML for Numbers -->
+                    <div class="col-md-6 Five_Numbers Div_Common">
+                        <h3>Input a list of numbers.</h3>
+                        <h6>(separated by a comma)</h6>
+                        <div class="Five_Numbers_Input">
+                            <input id="Num_String" type="text" name="" data-separator="," />
+                            <button onclick="func_Load_Num_Array(Num_String.value)">Submit</button>
+                        </div>
+                        <div>
+                            <br />
+                            <h5>The numbers that you entered are: <i id="disp_Num_Input"></i></h5>
+                            <br />
+                            <h5>The greatest number that you entered is: <i id="disp_High_Val"></i></h5>
+                            <h5>The smallest number that you entered is: <i id="disp_Low_Val"></i></h5>
+                            <br />
+                            <h5>The mean of the numbers that you entered is: <i id="disp_Mean_Val"></i></h5>
+                            <h5>The sum of the numbers that you entered is: <i id="disp_Sum_Val"></i></h5>
+                            <br />
+                            <h5>The product of the numbers that you entered is: <i id="disp_Product_Val"></i></h5>
+                        </div>
+                    </div>
+                    <!-- Preformated Javascript Code -->
+                    <div class="col-md-6">
+                        <pre class="brush: js">
+                            function func_Load_Num_Array(Num_Input) {
+                                var i = 0;
+                                var Temp_Num = '';
+                                for (n = 0; n < (Num_Input.length); n++) {
+                                    if (((Num_Input.charCodeAt(n) >= 46) && (Num_Input.charCodeAt(n) <= 57)) && (Num_Input.charCodeAt(n) != 47)) {
+                                        Temp_Num += Num_Input.charAt(n)
+                                    } else {
+                                        if (((Num_Input.charCodeAt(n - 1) >= 46) && (Num_Input.charCodeAt(n - 1) <= 57)) && (Num_Input.charCodeAt(n - 1) != 47)) {
+                                            Num_Array[i] = Number(Temp_Num);
+                                            i++;
+                                            Temp_Num = '';
+                                        }
+                                    }
+                                }
+                                /* If the last character entered was not a number, then Temp_Num will = '' and a
+                                zero will incorrectly be concatenated into the array */
+                                if (Temp_Num != '') {
+                                    Num_Array[i] = Number(Temp_Num);
+                                }
+                                Temp_Num = '';
+                                func_Process_Results();
+                            }
+                            function func_Process_Results() {
+                                var i = (Num_Array.length - 1);
+                                Num_Array.sort(function (a, b) { return a - b });
+                                Low_Val = Num_Array[0];
+                                High_Val = Num_Array[i];
+                                var n = 0;
+                                for (n = 0; n <= i; n++) {
+                                    Sum_Val += Num_Array[n];
+                                    Product_Val = Product_Val * Num_Array[n];
+                                }
+                                Mean_Val = (Sum_Val / Num_Array.length);
+                                func_Display_Results();
+                            }
+                            function func_Display_Results() {
+                                document.getElementById("disp_Num_Input").innerHTML = "<span style='color: green;'>" + Num_Array + "</span>";
+                                document.getElementById("disp_Low_Val").innerHTML = "<span style='color: green;'>" + Low_Val + "</span>";
+                                document.getElementById("disp_High_Val").innerHTML = "<span style='color: green;'>" + High_Val + "</span>";
+                                document.getElementById("disp_Mean_Val").innerHTML = "<span style='color: green;'>" + Mean_Val + "</span>";
+                                document.getElementById("disp_Sum_Val").innerHTML = "<span style='color: green;'>" + Sum_Val + "</span>";
+                                document.getElementById("disp_Product_Val").innerHTML = "<span style='color: green;'>" + Product_Val + "</span>";
+                                /* We must clear all of the variables or they will carry over, since they are global */
+                                Num_Array = [];
+                                High_Val = 0;
+                                Low_Val = 0;
+                                Mean_Val = 0;
+                                Sum_Val = 0;
+                                Product_Val = 1;
+                            }
+                        </pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+            var Num_Array = [];
+            var High_Val = 0;
+            var Low_Val = 0;
+            var Mean_Val = 0;
+            var Sum_Val = 0;
+            var Product_Val = 1; /* It will be used in multiplication later, thus 1 vs. 0 */
+            //var Separator = ','; /* document.getElementById(Num_String).data-separator.value; */
+            function func_Load_Num_Array(Num_Input) {
+                var i = 0;
+                var Temp_Num = '';
+                for (n = 0; n < (Num_Input.length); n++) {
+                    if (((Num_Input.charCodeAt(n) >= 46) && (Num_Input.charCodeAt(n) <= 57)) && (Num_Input.charCodeAt(n) != 47)) {
+                        Temp_Num += Num_Input.charAt(n)
+                    } else {
+                        if (((Num_Input.charCodeAt(n - 1) >= 46) && (Num_Input.charCodeAt(n - 1) <= 57)) && (Num_Input.charCodeAt(n - 1) != 47)) {
+                            Num_Array[i] = Number(Temp_Num);
+                            i++;
+                            Temp_Num = '';
+                        }
+                    }
+                }
+                /* If the last character entered was not a number, then Temp_Num will = '' and a
+                zero will incorrectly be concatenated into the array */
+                if (Temp_Num != '') {
+                    Num_Array[i] = Number(Temp_Num);
+                }
+                Temp_Num = '';
+                func_Process_Results();
+            }
+            function func_Process_Results() {
+                var i = (Num_Array.length - 1);
+                Num_Array.sort(function (a, b) { return a - b });
+                Low_Val = Num_Array[0];
+                High_Val = Num_Array[i];
+                var n = 0;
+                for (n = 0; n <= i; n++) {
+                    Sum_Val += Num_Array[n];
+                    Product_Val = Product_Val * Num_Array[n];
+                }
+                Mean_Val = (Sum_Val / Num_Array.length);
+                func_Display_Results();
+            }
+            function func_Display_Results() {
+                document.getElementById("disp_Num_Input").innerHTML = "<span style='color: green;'>" + Num_Array + "</span>";
+                document.getElementById("disp_Low_Val").innerHTML = "<span style='color: green;'>" + Low_Val + "</span>";
+                document.getElementById("disp_High_Val").innerHTML = "<span style='color: green;'>" + High_Val + "</span>";
+                document.getElementById("disp_Mean_Val").innerHTML = "<span style='color: green;'>" + Mean_Val + "</span>";
+                document.getElementById("disp_Sum_Val").innerHTML = "<span style='color: green;'>" + Sum_Val + "</span>";
+                document.getElementById("disp_Product_Val").innerHTML = "<span style='color: green;'>" + Product_Val + "</span>";
+                /* We must clear all of the variables or they will carry over, since they are global */
+                Num_Array = [];
+                High_Val = 0;
+                Low_Val = 0;
+                Mean_Val = 0;
+                Sum_Val = 0;
+                Product_Val = 1;
+            }
+        </script>
+    </div>
+</div>

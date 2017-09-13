@@ -1,0 +1,59 @@
+﻿<div class="modal-body">
+    <div class="col-md-6 Factorial Div_Common">
+        <h3>Input a number to find the factorial.</h3>
+        <br />
+        <div class="Factorial_Input">
+            <input id="Number_Entered" type="number" autofocus="autofocus" />
+            <button onclick="func_Factorial(Number_Entered.value)">Submit</button>
+        </div>
+        <br />
+        <h5>Factorial: <i id="Factorial"></i></h5>
+        <h5>Total: <i id="Total"></i></h5>
+    </div>
+    <!-- Preformated Javascript Code -->
+    <div class="col-md-6">
+        <pre class="brush: js">
+function func_Factorial(x) {
+    if (x != 0) {
+        y = Math.abs(x);
+        Total_Val = 1;
+        i = 0;
+        Fact_Array = [];
+        for (n = y; n > 0; n--) {
+            Total_Val = Total_Val * n;
+            Fact_Array[i] = n.toString();
+            i++;
+        }
+        document.getElementById("Factorial").innerHTML = "<span style='color: blue;'>" + Fact_Array + "</span>";
+        document.getElementById("Total").innerHTML = "<span style='color: green;'>" + Total_Val + "</span>";
+    }
+    else {
+        document.getElementById("Factorial").innerHTML = 
+            "<span style='color: red;'>Your input was invalid, please enter a numeric value not equal to 0.</span>";
+        document.getElementById("Total").innerHTML = "";
+    }
+}
+        </pre>
+    </div>
+</div>
+<script>
+    function func_Factorial(x) {
+        if (x != 0) {
+            y = Math.abs(x);
+            Total_Val = 1;
+            i = 0;
+            Fact_Array = [];
+            for (n = y; n > 0; n--) {
+                Total_Val = Total_Val * n;
+                Fact_Array[i] = n.toString();
+                i++;
+            }
+            document.getElementById("Factorial").innerHTML = "<span style='color: blue;'>" + Fact_Array + "</span>";
+            document.getElementById("Total").innerHTML = "<span style='color: green;'>" + Total_Val + "</span>";
+        }
+        else {
+            document.getElementById("Factorial").innerHTML = "<span style='color: red;'>Your input was invalid, please enter a numeric value not equal to 0.</span>";
+            document.getElementById("Total").innerHTML = "";
+        }
+    }
+</script>

@@ -1,0 +1,43 @@
+﻿.text_align_right {
+    text-align: right;
+}
+.text_align_left {
+    text-align:left;
+}
+.padding_right_5 {
+    padding-right: 5px;
+}
+.padding_left_5 {
+    padding-left: 5px;
+}
+.text_decoration_none {
+    text-decoration: none;
+}
+proj_factorial {
+}
+    .proj_factorial .hex-area,
+    .proj_factorial .outer-hex {
+        background-color: deeppink;
+        transition: background-color 0.4s ease;
+    }
+
+.proj_palindrome .hex-area,
+.proj_palindrome .outer-hex {
+    background-color: forestgreen;
+    transition: background-color 0.4s ease;
+}
+
+.proj_numberfun .hex-area,
+.proj_numberfun .outer-hex {
+    background-color: darkslateblue;
+    transition: background-color 0.4s ease;
+}
+.modal modal-content {
+    max-height: 80vh !important;
+}
+
+.proj_fizzbuzz .hex-area,
+.proj_fizzbuzz .outer-hex {
+    background-color: purple;
+    transition: background-color 0.4s ease;
+}

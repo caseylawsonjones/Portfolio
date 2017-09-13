@@ -1,0 +1,56 @@
+﻿<div class="modal" , role="dialog">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="container">
+                <div class="row">
+                    <!-- HTML for Palindrome -->
+                    <div class="col-md-6 Palindrome Div_Common">
+                        <h3>Will it Palindrome?</h3>
+                        <br />
+                        <div class="Palindrome_Input">
+                            <input autofocus="autofocus" id="Text_Input" type="text" />
+                            <button onclick="func_Palindrome(Text_Input.value)">Submit</button>
+                        </div>
+                        <br />
+                        <i id="Is_Pal"></i>
+                    </div>
+                    <!-- Preformated Javascript Code -->
+                    <div class="col-md-6">
+                        <pre class="brush: js">
+                            function func_Palindrome(Text_String) {
+                                var i = 0;
+                                var n = 5;
+                                var Pal_String = Text_String.toLowerCase();
+                                var Pal_String2 = Pal_String.replace(/ /g, "");
+                                Pal_String = '';
+                                for (i = Pal_String2.length; i >= 0; i--) {
+                                    Pal_String += Pal_String2.charAt(i);
+                                }
+                                n = Pal_String.localeCompare(Pal_String2);
+                                if (n == 0) { Is_Pal = "<span style='color: green; font-weight: bold'>Wow!  Your word or phrase is a Palindrome!!!!!</span>" }
+                                else { Is_Pal = "<span style='color: red'>Sorry friend, your word or phrase is not a Palindrome.</span>" }
+                                document.getElementById("Is_Pal").innerHTML = Is_Pal;
+                            }
+                        </pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+            function func_Palindrome(Text_String) {
+                var i = 0;
+                var n = 5;
+                var Pal_String = Text_String.toLowerCase();
+                var Pal_String2 = Pal_String.replace(/ /g, "");
+                Pal_String = '';
+                for (i = Pal_String2.length; i >= 0; i--) {
+                    Pal_String += Pal_String2.charAt(i);
+                }
+                n = Pal_String.localeCompare(Pal_String2);
+                if (n == 0) { Is_Pal = "<span style='color: green; font-weight: bold'>Wow!  Your word or phrase is a Palindrome!!!!!</span>" }
+                else { Is_Pal = "<span style='color: red'>Sorry friend, your word or phrase is not a Palindrome.</span>" }
+                document.getElementById("Is_Pal").innerHTML = Is_Pal;
+            }
+        </script>
+    </div>
+</div>
